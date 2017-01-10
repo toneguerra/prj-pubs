@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Expense\Auxiliar;
+namespace App\Model\Expense\Type;
 
 use Illuminate\Database\Eloquent\Model;
 

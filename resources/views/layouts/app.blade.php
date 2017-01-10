@@ -60,8 +60,8 @@
                     <a tabindex="-1" href="#">Cadastros Auxiliares</a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Segmentação</a></li>
-                        <li><a href="{{route('expense.type.index')}}">Tipos</a></li>
-                        <li><a href="#">Períodos</a></li>
+                        <li><a href="{{ route('expense.type.index') }}">Tipos</a></li>
+                        <li><a href="{{ route('expense.period.index') }}">Períodos</a></li>
                     </ul>
                 </li>
                 @endif

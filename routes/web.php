@@ -23,9 +23,17 @@ Route::group(['as'=>'expense.', 'prefix'=>'expense', 'middleware'=>'auth'], func
     */
 });
 
+//ROTAS CATEGORIA TIPOS DE CONTAS
 Route::group(['as'=>'expense.type.','prefix'=>'expense.type','middleware'=>'auth'], function(){
-	Route::get('/',['as'=>'index', 'uses'=>'Expense\Auxiliar\ExpenseTypeController@index']);
+	Route::get('/',['as'=>'index', 'uses'=>'Expense\Type\ExpenseTypeController@index']);
 });
+
+
+//ROTAS PERÍODOS DAS CONTAS
+Route::group(['as'=>'expense.period.','prefix'=>'expense.period','middleware'=>'auth'], function(){
+	Route::get('/',['as'=>'index', 'uses'=>'Expense\Period\ExpensePeriodController@index']);
+});
+
 
 Auth::routes();
 

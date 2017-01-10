@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        DB::table('users')->insert(['name' => 'Tone Alex Guerra', 'email'=>'toneguerra@yahoo.com.br','password'=>'123456']);
+        DB::table('users')->insert(['name' => 'Tone Alex Guerra', 'email'=>'toneguerra@yahoo.com.br','password'=>'$2y$10$hxSXgY5kEFRFrzBQ6SzbqeV/41Fjxh1VnBObitJKCDUz5mpIv05G.']);
     }
 
 
