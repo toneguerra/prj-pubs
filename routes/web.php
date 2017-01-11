@@ -34,6 +34,11 @@ Route::group(['as'=>'expense.period.','prefix'=>'expense.period','middleware'=>'
 	Route::get('/',['as'=>'index', 'uses'=>'Expense\Period\ExpensePeriodController@index']);
 });
 
+//ROTAS RELATÓRIOS DOS SEGMENTOS
+Route::group(['as'=>'expense.segment.','prefix'=>'expense.segment','middleware'=>'auth'], function(){
+	Route::get('/',['as'=>'index', 'uses'=>'Expense\Segment\ExpenseSegmentController@index']);
+});
+
 
 Auth::routes();
 
