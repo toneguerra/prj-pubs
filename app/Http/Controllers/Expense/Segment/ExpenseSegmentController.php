@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Expense\Segment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Expense\Segment\ExpenseSegment;
+use App\Model\Expense\Type\ExpenseType;
+use App\Model\Expense\Period\ExpensePeriod;
+
 
 class ExpenseSegmentController extends Controller
 {
@@ -27,7 +30,9 @@ class ExpenseSegmentController extends Controller
      */
     public function create()
     {
-        //
+        $types = ExpenseType::pluck('name','id');
+        $periods = ExpensePeriod::pluck('name','id');
+        return view('expense.segment.create',compact(['types','periods']));
     }
 
     /**
@@ -38,7 +43,16 @@ class ExpenseSegmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+/*
+        $this->validate($request,
+            [
+            'name'=>'required',
+            ]
+        );
+*/
+        $var = $this->ExpenseSegment->rules;
+
+        echo $var;
     }
 
     /**

@@ -31,7 +31,7 @@
 }
 
 .dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
+    border-left-color: #999;
 }
 
 .dropdown-submenu.pull-left {
@@ -44,4 +44,10 @@
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
+}
+
+/* MEUS ESTILOS */
+.div-form {
+    border-left:solid 10px #1f648b;
+    border-radius:20px;
 }
