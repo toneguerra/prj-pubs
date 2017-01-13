@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Expense\Segment;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Session;
+
 use App\Model\Expense\Segment\ExpenseSegment;
 use App\Model\Expense\Type\ExpenseType;
 use App\Model\Expense\Period\ExpensePeriod;
+
+use App\Http\Requests\Expense\ExpenseSegmentFormRequest;
 
 
 class ExpenseSegmentController extends Controller
@@ -19,6 +24,8 @@ class ExpenseSegmentController extends Controller
     public function index()
     {
         $segmentos = ExpenseSegment::all();
+
+        dd ($segmentos);
 
         return view('expense.segment.index', compact(['segmentos']));
     }
@@ -41,18 +48,13 @@ class ExpenseSegmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExpenseSegmentFormRequest $request)
     {
-/*
-        $this->validate($request,
-            [
-            'name'=>'required',
-            ]
-        );
-*/
-        $var = $this->ExpenseSegment->rules;
+        $segment = new ExpenseSegment();
+        $segment = ExpenseSegment::create($request->all());
 
-        echo $var;
+        Session::flash('success','Operação completada com sucesso!');
+        return redirect(route('expense.segment.index'));
     }
 
     /**

@@ -85,7 +85,7 @@ class CreateExpensesTable extends Migration
         Schema::create('expense_segments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
-            $table->char('abrev', 3);
+            $table->char('abrev', 4);
             $table->integer('expense_type_id')->unsigned();
             $table->integer('expense_period_id')->unsigned();
             $table->foreign('expense_type_id')->references('id')->on('expense_types');
