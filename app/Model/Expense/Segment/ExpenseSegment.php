@@ -12,12 +12,12 @@ class ExpenseSegment extends Model
 
     protected $fillable=['name','abrev', 'expense_type_id', 'expense_period_id'];
 
-/*
+
     public function period(){
-        $this->hasOne(ExpensePeriod);
+        return $this->belongsTo(ExpensePeriod::class, 'expense_period_id');
     }
-*/
+
     public function type(){
-        $this->hasOne(ExpenseType::class);
+        return $this->belongsTo(ExpenseType::class,'expense_type_id');
     }
 }

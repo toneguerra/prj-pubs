@@ -11,10 +11,9 @@
 		{{ session('success') }}
 	</div>
 @endif
-
-<table class="table table-condensed table-hover">
-	<a href="{{ route('expense.segment.create') }}" class="btn btn-primary pull-right" role="button">Novo Relatório</a>
-	<thead>
+	<table class="table table-condensed table-hover">
+		<a href="{{ route('expense.segment.create') }}" class="btn btn-primary pull-right" role="button">Novo Relatório</a>
+		<thead>
 		<tr>
 			<th>Id</th>
 			<th>Nome</th>
@@ -22,17 +21,20 @@
 			<th>Tipo</th>
 			<th>Período</th>
 		</tr>
-	</thead>
-	<tbody>
-		@foreach($segmentos as $segmento)
-		<tr>
-			<th scope="row">{{ $segmento->id }}</th>
-			<td>{{ $segmento->name }}</td>
-			<td>{{ $segmento->abrev }}</td>
-			<td>{{ $segmento->period }}</td>
-			<td>{{ $segmento->expense_period_id }}</td>
-		</tr>
+		</thead>
+		<tbody>
+		@foreach($segmentos as $typeGroup=>$segmentos)
+
+			@foreach($segmentos as $segmento)
+				<tr>
+					<th scope="row">{{$segmento->id}}</th>
+					<td>{{$segmento->name}}</td>
+					<td>{{$segmento->abrev}}</td>
+					<td>{{$segmento->type->abrev}}</td>
+					<td>{{$segmento->period->name}}</td>
+				</tr>
+			@endforeach
 		@endforeach
-	</tbody>
-</table>
+		</tbody>
+	</table>
 @endsection

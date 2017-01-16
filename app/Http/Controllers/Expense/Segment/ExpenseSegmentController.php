@@ -23,9 +23,16 @@ class ExpenseSegmentController extends Controller
      */
     public function index()
     {
-        $segmentos = ExpenseSegment::all();
+        /*
+        $segmentos = ExpenseSegment::orderBy('expense_type_id','asc')
+            ->orderBy('expense_period_id','asc')
+            ->get();
+        */
 
-        dd ($segmentos);
+        $segmentos = ExpenseSegment::all()
+            ->groupBy('expense_type_id');
+
+
 
         return view('expense.segment.index', compact(['segmentos']));
     }
