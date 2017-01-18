@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Expense;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Expense\PeriodDetail\ExpensePeriodDetail;
 
 class ExpenseController extends Controller
 {
@@ -14,7 +15,11 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-      return view('expense.index');
+        $periodDetails = ExpensePeriodDetail::all();
+
+        //dd($periodDetails);
+
+      return view('expense.index',compact(['periodDetails']));
     }
 
     /**

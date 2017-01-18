@@ -79,7 +79,7 @@ class CreateExpensesTable extends Migration
             DB::table('expense_period_details')->insert(['name' => '1º Semestre', 'abrev'=>'1Sem', 'expense_period_id'=>'5']);
             DB::table('expense_period_details')->insert(['name' => '2º Semestre', 'abrev'=>'2Sem', 'expense_period_id'=>'5']);
 
-            DB::table('expense_period_details')->insert(['name' => 'Anual', 'abrev'=>'Anl', 'expense_period_id'=>'5']);
+            DB::table('expense_period_details')->insert(['name' => 'Anual', 'abrev'=>'Anl', 'expense_period_id'=>'6']);
 
 
         Schema::create('expense_segments', function (Blueprint $table) {

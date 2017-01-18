@@ -53,10 +53,8 @@
             <ul class="dropdown-menu">
                 @if (Auth::guest())
                 <li role="presentation"><a href="#">Listar Publicadas</a></li>
-                <li role="presentation"><a href="#">Adicionar Nova Publicação</a></li>
                 @else
                 <li role="presentation"><a href="{{route('expense.index')}}">Listar Publicadas</a></li>
-                <li role="presentation"><a href="#">Adicionar Nova Publicação</a></li>
 
                 <li class="divider"></li>
                 <li class="dropdown-submenu">

@@ -5,21 +5,31 @@
 		<h3>Contas Públicas <small>- Auxiliar/Períodos</small></h3>
 	</div>
 
+	@foreach($periodos as $periodo)
+		<div class="col-md-2 col-lg-2">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{ $periodo->name }}</h3>
+				</div>
 
-	<table class="table table-condensed table-hover">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nome</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($periodos as $periodo)
-			<tr>
-				<th scope="row">{{ $periodo->id }}</th>
-				<td>{{ $periodo->name }}</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
+				<!-- Table -->
+				<table class="table table-condensed">
+					<thead>
+					<tr class="active">
+						<th>Nome</th>
+						<th>Abrev</th>
+					</tr>
+					</thead>
+					<tbody>
+					@foreach($periodo->periodDetails as $periodDetail)
+						<tr>
+							<td>{{ $periodDetail->name }}</td>
+							<td>{{ $periodDetail->abrev }}</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
+		</div>
+	@endforeach
 @endsection
