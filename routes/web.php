@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//ROTAS ANO ATIVIDADE
+Route::group(['as'=>'year.','prefix'=>'year','middleware'=>'auth'], function(){
+	Route::get('/',['as'=>'create', 'uses'=>'Year\YearController@create']);
+	Route::post('/',['as'=>'store', 'uses'=>'Year\YearController@store']);
+});
+
+
 Route::group(['as'=>'expense.', 'prefix'=>'expense', 'middleware'=>'auth'], function(){
     Route::get('/',['as'=>'index', 'uses'=>'Expense\ExpenseController@index']);
     /*    Route::get('edit/{id}',['as'=>'edit', 'uses'=>'Status\StatusController@edit']);
@@ -27,6 +34,7 @@ Route::group(['as'=>'expense.', 'prefix'=>'expense', 'middleware'=>'auth'], func
 Route::group(['as'=>'expense.type.','prefix'=>'expense.type','middleware'=>'auth'], function(){
 	Route::get('/',['as'=>'index', 'uses'=>'Expense\Type\ExpenseTypeController@index']);
 });
+
 
 
 //ROTAS PERÍODOS DAS CONTAS
