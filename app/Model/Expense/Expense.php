@@ -2,12 +2,19 @@
 
 namespace App\Model\Expense;
 
-use App\Model\Expense\Segment\ExpenseSegment;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Expense\Segment\ExpenseSegment;
+
 
 class Expense extends Model
 {
+
+    protected $fillable = [
+        'id',
+        'year_id',
+        'expense_segment_id',
+        'expense_period_detail_id',
+        'path'
+    ];
 
 
 }

@@ -24,15 +24,15 @@
 
 
     <div class="form-group">
-        {!! Form::select('expense_year',$years,null,['class'=>'form-control', 'placeholder'=>'Selecione o Ano']) !!}
+        {!! Form::select('year_id',$years,null,['class'=>'form-control', 'placeholder'=>'Selecione o Ano']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::select('expense_segment',$segments,null,['class'=>'form-control', 'placeholder'=>'Selecione Segmento da Publicação','id'=>'expense_segment']) !!}
+        {!! Form::select('expense_segment_id',$segments,null,['class'=>'form-control', 'placeholder'=>'Selecione Segmento da Publicação','id'=>'expense_segment']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::select('expense_period_detail',[],null,[
+        {!! Form::select('expense_period_detail_id',[],null,[
                 'class'=>'form-control', 'placeholder'=>'Selecione o Período','id'=>'expense_period_detail']) !!}
     </div>
 

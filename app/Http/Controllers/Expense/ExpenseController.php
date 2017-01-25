@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Expense;
 
-//use Illuminate\Auth\Access\Response;
+
 use App\Http\Requests\Expense\ExpenseFormRequest;
-use App\Http\Requests\Expense\ExpenseSegmentFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 
+use App\Model\Expense\Expense;
 use App\Model\Year\Year;
 use App\Model\Expense\Segment\ExpenseSegment;
 use App\Model\Expense\PeriodDetail\ExpensePeriodDetail;
-use Mockery\Matcher\Type;
+
 
 
 class ExpenseController extends Controller
@@ -25,9 +26,9 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-      //$periodDetails = ExpensePeriodDetail::find(1);
-      //dd($periodDetails);
-      //return view('expense.index',compact(['periodDetails']));
+        $relat = Expense::all();
+
+        return view('expense.index',compact(['relat']));
     }
 
     /**
@@ -52,7 +53,48 @@ class ExpenseController extends Controller
      */
     public function store(ExpenseFormRequest $request)
     {
-        echo '<pre>'. $request . '</pre>';
+
+        //dd($request->all());
+        $year_id = Year::findOrfail($request->year_id);
+        $year = $year_id->year;
+
+        $segment = ExpenseSegment::findOrfail($request->expense_segment_id);
+        $typAbrev = $segment->type->abrev;
+        $segAbrev = $segment->abrev;
+
+        $periodD_id = ExpensePeriodDetail::findOrfail($request->expense_period_detail_id);
+        $perAbrev = $periodD_id->abrev;
+
+        $fileName = $year.$typAbrev.$segAbrev.$perAbrev;
+        $path = 'pubs/'.$year.'/contaspublicas/'.$segAbrev;
+
+
+
+        if ($request->hasFile('path')) {
+            $fileName = $fileName.'.'.$request->path->getClientOriginalExtension();
+            $request->path->move(public_path($path),$fileName);
+
+            $segment = new Expense();
+            $segment = Expense::create(
+                [
+                    'year_id' => $request->year_id,
+                    'expense_segment_id' => $request->expense_segment_id,
+                    'expense_period_detail_id' => $request->expense_period_detail_id,
+                    'path' => $path.'/'.$fileName
+                ]
+            );
+
+
+            Session::flash('success','Operação completada com sucesso!');
+
+            return redirect(route('expense.index'));
+
+        }
+
+
+
+
+        //echo '<pre>'. $request . '</pre>';
     }
 
     /**

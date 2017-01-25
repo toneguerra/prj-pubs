@@ -50,4 +50,6 @@
 .div-form {
     border-left:solid 10px #1f648b;
     border-radius:20px;
+    background-image: url("/images/bgform-min.jpg");
+    background-size: cover;
 }

@@ -24,9 +24,9 @@ class ExpenseFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'expense_year'=>'required',
-            'expense_segment'=>'required',
-            'expense_period_detail'=>'required',
+            'year_id'=>'required',
+            'expense_segment_id'=>'required',
+            'expense_period_detail_id'=>'required',
             'path'=>'required|mimetypes:application/pdf'
         ];
     }
@@ -34,9 +34,9 @@ class ExpenseFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'expense_year.required'=>'O campo Ano é obrigatório.',
-            'expense_segment.required'=>'O campo Segmento da Publicação é obrigatório.',
-            'expense_period_detail.required'=>'O campo Período é obrigatório.',
+            'year_id.required'=>'O campo Ano é obrigatório.',
+            'expense_segment_id.required'=>'O campo Segmento da Publicação é obrigatório.',
+            'expense_period_detail_id.required'=>'O campo Período é obrigatório.',
             'path.required'=>'É obrigatório selecionar um arquivo *.pdf.',
             'path.mimetypes'=>'O arquivo não é um PDF válido.'
         ];
