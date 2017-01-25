@@ -24,7 +24,7 @@ class ExpenseSegmentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:10|max:50',
+            'name'=>'required|min:10|max:100',
             'abrev'=>'required|between:4,4',
             'expense_type_id'=>'required',
             'expense_period_id'=>'required'
@@ -36,7 +36,7 @@ class ExpenseSegmentFormRequest extends FormRequest
         return [
             'name.required'=>'O campo Título do Relatório é obrigatório.',
             'name.min'=>'O Título do Relatório deve ter no mínimo 10 caracteres.',
-            'name.max'=>'O Título do Relatório não deve ter mais de 50 caracteres.',
+            'name.max'=>'O Título do Relatório não deve ter mais de 100 caracteres.',
 
             'abrev.required'=>'O campo Abreviatura é obrigatório.',
             'abrev.between'=>'A Abreviatura deve ter 4 caracteres bet_4,4.',

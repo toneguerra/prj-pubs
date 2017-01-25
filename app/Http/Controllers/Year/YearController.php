@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Year;
 
+use App\Http\Requests\Year\YearFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Session;
+use App\Model\Year\Year;
 
 class YearController extends Controller
 {
@@ -14,7 +18,6 @@ class YearController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +27,8 @@ class YearController extends Controller
      */
     public function create()
     {
-        return view('year.create');
+        $years = Year::all();
+        return view('year.create',compact(['years']));
     }
 
     /**
@@ -33,9 +37,13 @@ class YearController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(YearFormRequest $request)
     {
-        dd($request);
+        $year = new Year();
+        $year = Year::create($request->all());
+
+        Session::flash('success','Operação completada com sucesso!');
+        return redirect(route('year.create'));
     }
 
     /**

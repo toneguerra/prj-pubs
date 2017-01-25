@@ -5,4 +5,6 @@
 		<h3>Contas Públicas <small>- Listar</small></h3>
 	</div>
 
+	{{ $periodDetails }}
+
 @endsection

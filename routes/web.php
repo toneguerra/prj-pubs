@@ -17,13 +17,17 @@ Route::get('/', function () {
 
 //ROTAS ANO ATIVIDADE
 Route::group(['as'=>'year.','prefix'=>'year','middleware'=>'auth'], function(){
-	Route::get('/',['as'=>'create', 'uses'=>'Year\YearController@create']);
-	Route::post('/',['as'=>'store', 'uses'=>'Year\YearController@store']);
+	//Route::get('/',['as'=>'index', 'uses'=>'Year\YearController@index']);
+	Route::get('create',['as'=>'create', 'uses'=>'Year\YearController@create']);
+	Route::post('store',['as'=>'store', 'uses'=>'Year\YearController@store']);
 });
 
 
 Route::group(['as'=>'expense.', 'prefix'=>'expense', 'middleware'=>'auth'], function(){
     Route::get('/',['as'=>'index', 'uses'=>'Expense\ExpenseController@index']);
+	Route::get('create',['as'=>'create', 'uses'=>'Expense\ExpenseController@create']);
+	Route::post('store',['as'=>'store', 'uses'=>'Expense\ExpenseController@store']);
+	Route::get('filtro',['as'=>'filtro', 'uses'=>'Expense\ExpenseController@filtro']);
     /*    Route::get('edit/{id}',['as'=>'edit', 'uses'=>'Status\StatusController@edit']);
         Route::post('update/{id}',['as'=>'update', 'uses'=>'Status\StatusController@update']);
         Route::get('destroy/{id}',['as'=>'destroy', 'uses'=>'Status\StatusController@destroy']);

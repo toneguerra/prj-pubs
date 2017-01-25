@@ -52,9 +52,11 @@
             Contas Públicas <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 @if (Auth::guest())
-                <li role="presentation"><a href="#">Listar Publicadas</a></li>
+                <li role="presentation"><a href="#">Adicionar Publicação</a></li>
+                <li role="presentation"><a href="#">Listar Publicações</a></li>
                 @else
-                <li role="presentation"><a href="{{route('expense.index')}}">Listar Publicadas</a></li>
+                <li role="presentation"><a href="{{route('expense.create')}}">Adicionar Publicação</a></li>
+                <li role="presentation"><a href="{{route('expense.index')}}">Listar Publicações</a></li>
 
                 <li class="divider"></li>
                 <li class="dropdown-submenu">
@@ -137,8 +139,32 @@
 </body>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>!-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>!-->
+
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>
+    $(document).ready(function($) {
+        $('#expense_segment').on('change', function(){
+            $.ajax({
+                url:'filtro',
+                type:'GET',
+                data: {expense_segment : $('#expense_segment').val()},
+                success: function (data){
+                    $('#expense_period_detail').empty();
+                    $.each(data, function(index, jsonReturn){
+                         $('#expense_period_detail').append('<option value="'+jsonReturn.id +'">'+jsonReturn.name+'</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 
 </html>

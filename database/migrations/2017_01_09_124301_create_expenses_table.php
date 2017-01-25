@@ -16,7 +16,7 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expense_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
+            $table->string('name', 100);
             $table->char('abrev', 3);
             $table->timestamps();
         });
@@ -26,7 +26,7 @@ class CreateExpensesTable extends Migration
 
         Schema::create('expense_periods', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
+            $table->string('name', 100);
             $table->timestamps();
         });
 
@@ -40,7 +40,7 @@ class CreateExpensesTable extends Migration
  
         Schema::create('expense_period_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
+            $table->string('name', 100);
             $table->char('abrev', 4);
             $table->integer('expense_period_id')->unsigned();
             $table->foreign('expense_period_id')->references('id')->on('expense_periods');
@@ -84,7 +84,7 @@ class CreateExpensesTable extends Migration
 
         Schema::create('expense_segments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
+            $table->string('name', 100);
             $table->char('abrev', 4);
             $table->integer('expense_type_id')->unsigned();
             $table->integer('expense_period_id')->unsigned();
@@ -103,9 +103,11 @@ class CreateExpensesTable extends Migration
             $table->increments('id');
             $table->integer('year_id')->unsigned();
             $table->integer('expense_segment_id')->unsigned();
+            $table->integer('expense_period_detail_id')->unsigned();
+            $table->string('path', 100);
             $table->foreign('year_id')->references('id')->on('years');
             $table->foreign('expense_segment_id')->references('id')->on('expense_segments');
-            $table->string('name', 50);
+            $table->foreign('expense_period_detail_id')->references('id')->on('expense_period_details');
             $table->timestamps();
         });
     }
